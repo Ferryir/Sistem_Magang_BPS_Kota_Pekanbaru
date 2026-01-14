@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* @media screen and (min-width: 900px) {
+} */
+body {
+    /* width: 100vw; */
+    overflow-x: hidden !important;
+}
+
+/* css memberikan animasi garis di navbar home page*/
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* css untuk animasi responsif navbar di home page */
+.slide-down-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+.slide-down-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.5s;
+}
+.slide-down-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+.slide-down-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+/* css untuk gradient img */
+.gradient-overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 90%;
+    background: linear-gradient(to top, black, transparent);
+    z-index: 1;
+}
+
+.gradient-overlay-about::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 90%;
+    background: linear-gradient(to right, black, transparent);
+    z-index: 1;
+}
+
+.gradient-overlay-login::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    opacity: 100%;
+    background: linear-gradient(to left, rgb(255, 255, 255), transparent);
+    z-index: 1;
+}
+
+@media screen and (max-width: 1024px) {
+    .gradient-overlay-login::after {
+        background: transparent;
+    }
+}
+
+.gradient-overlay-registrasi::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    opacity: 100%;
+    background: linear-gradient(to top, rgb(243 244 246), transparent);
+    z-index: 1;
+}
+
+/* css untuk parallax img beranda dan about */
+.parallax-beranda {
+    background-image: url("../../public/assets/home/beranda/hero-bg.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-about {
+    background-image: url("../../public/assets/home/about/about.JPEG");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-about::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.4
+    ); /* Adjust the opacity to make it darker or lighter */
+    z-index: 1;
+}
+
+/* css hover card informasi fungsi bagian */
+li .fungsi-card-parent {
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-container {
+    position: relative;
+}
+
+.icon-info {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+.icon-container:hover ~ .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+li .fungsi-card-parent .overlay {
+    /* background: linear-gradient(to left, #2162cc, #1845da); */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+@media screen and (min-width: 1190px) and (max-width: 1800px) {
+    .registrasi {
+        height: 125vh !important;
+    }
+}
+
+/* Tambahkan CSS ini untuk gaya sidebar yang mengecil */
+.aside-collapsed {
+    width: 80px; /* Ukuran sidebar saat mengecil */
+}
+
+.aside-collapsed .sidebar-nav ul li a span {
+    display: none; /* Sembunyikan teks menu saat sidebar mengecil */
+}
+
+.aside-collapsed .sidebar-nav ul li a i {
+    margin-right: 0; /* Atur margin icon */
+}
+
+.aside-collapsed #toggle-sidebar i {
+    transform: rotate(180deg); /* Putar ikon tombol saat sidebar mengecil */
+}
+
+/* untuk animasi show */
+.show-div {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in-div {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
