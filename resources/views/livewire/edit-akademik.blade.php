@@ -24,6 +24,27 @@
         </div>
 
         <div>
+            <label for="prodi" class="block mb-1 text-md font-medium text-gray-700">Program Studi (Prodi)<span
+                    class="text-red-500 ml-1">*</span></label>
+            <input type="text" name="prodi" id="prodi" min="0" wire:model.live="prodi"
+                placeholder="Masukkan program studi"
+                class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]" />
+            @error('prodi')
+                <span class="text-red-600 text-[11px]">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div>
+            <label for="semester" class="block mb-1 text-md font-medium text-gray-700">Semester<span
+                    class="text-red-500 ml-1">*</span></label>
+            <input type="number" name="semester" id="semester" min="1" wire:model.live="semester" placeholder="Semester"
+                class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]" />
+            @error('semester')
+                <span class="text-red-600 text-[11px]">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div>
             <label for="nomor_induk" class="block mb-1 text-md font-medium text-gray-700">Nomor Induk
                 Siswa/Mahasiswa<span class="text-red-500 ml-1">*</span></label>
             <input type="number" name="nomor_induk" id="nomor_induk" min="0" wire:model.live="nomor_induk"

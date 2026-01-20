@@ -15,8 +15,8 @@
                     </div>
                     <img id="profile-image" src="{{ Storage::url($foto_profil) }}" alt="Preview Foto Profil"
                         class="absolute inset-0 w-full h-full object-cover">
-                    <input type="file" name="foto_profil" id="profile-input" class="hidden"
-                        accept=".png, .jpg, .jpeg" wire:model="foto_profil" />
+                    <input type="file" name="foto_profil" id="profile-input" class="hidden" accept=".png, .jpg, .jpeg"
+                        wire:model="foto_profil" />
                 </div>
             @else
                 <div class="relative w-28 h-28 mt-3 rounded-full overflow-hidden cursor-pointer bg-gray-200 border-2 group"
@@ -27,8 +27,8 @@
                     </div>
                     <img id="profile-image" src="{{ $foto_profil->temporaryUrl() }}" alt="Preview Foto Profil"
                         class="absolute inset-0 w-full h-full object-cover">
-                    <input type="file" name="foto_profil" id="profile-input" class="hidden"
-                        accept=".png, .jpg, .jpeg" wire:model="foto_profil" />
+                    <input type="file" name="foto_profil" id="profile-input" class="hidden" accept=".png, .jpg, .jpeg"
+                        wire:model="foto_profil" />
                 </div>
             @endif
         @else
@@ -102,13 +102,62 @@
         <div>
             <label for="tanggal_lahir" class="block mb-1 text-md font-medium text-gray-700">Tanggal Lahir<span
                     class="text-red-500 ml-1">*</span></label>
-            <input type="date" name="tanggal_lahir" id="tanggal_lahir" wire:model.live="tanggal_lahir"
-                class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]"
-                placeholder="Pilih tanggal lahir" max="{{ date('Y-m-d', strtotime('-1 day')) }}" />
+            <div wire:ignore>
+                <input type="text" name="tanggal_lahir" id="tanggal_lahir" wire:model.live="tanggal_lahir"
+                    class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]"
+                    placeholder="Pilih tanggal lahir" />
+            </div>
             @error('tanggal_lahir')
                 <span class="text-red-500 text-[11px]">{{ $message }}</span>
             @enderror
         </div>
+
+        @push('styles')
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+            <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+            <style>
+                .flatpickr-calendar {
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                    border-radius: 0.5rem;
+                }
+            </style>
+        @endpush
+
+        @push('scripts')
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+            <script>
+                function initDatePicker() {
+                    flatpickr("#tanggal_lahir", {
+                        locale: "id",
+                        altInput: true,
+                        altFormat: "j F Y",
+                        dateFormat: "Y-m-d",
+                        maxDate: "today",
+                        disableMobile: false,
+                        monthSelectorType: 'static',
+                        yearSelectorType: 'static',
+                        onChange: function (selectedDates, dateStr, instance) {
+                            instance.element.value = dateStr;
+                            instance.element.dispatchEvent(new Event('input'));
+                        }
+                    });
+                }
+
+                // Initialize on load
+                initDatePicker();
+
+                // Re-initialize after Pjax
+                $(document).on('pjax:complete', function () {
+                    initDatePicker();
+                });
+
+                // Handle Livewire updates if necessary (though wire:ignore helps)
+                document.addEventListener('livewire:initialized', () => {
+                    initDatePicker();
+                });
+            </script>
+        @endpush
 
         <div>
             <label for="nomor_hp" class="block mb-1 text-md font-medium text-gray-700">Nomor HP<span
@@ -138,11 +187,11 @@
 </form>
 
 <script>
-    document.getElementById('profile-input').addEventListener('change', function(event) {
+    document.getElementById('profile-input').addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 const imgElement = document.getElementById('profile-image');
                 imgElement.src = e.target.result;
                 imgElement.classList.remove('hidden');

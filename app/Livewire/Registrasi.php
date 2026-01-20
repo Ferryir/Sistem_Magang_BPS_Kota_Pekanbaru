@@ -19,6 +19,8 @@ class Registrasi extends Component
     $nomor_induk,
     $institusi,
     $jurusan,
+    $prodi,
+    $semester,
     $nomor_hp,
     $kartu_tanda,
     $password,
@@ -30,8 +32,10 @@ class Registrasi extends Component
             'name' => 'required|min:5',
             'email' => 'required|email|unique:users',
             'nomor_induk' => 'required|min:5|unique:users',
-            'institusi' => 'required',
-            'jurusan' => 'required',
+            'institusi' => 'required|regex:/^[^a-z]*$/',
+            'jurusan' => 'required|regex:/^[^a-z]*$/',
+            'prodi' => 'required|regex:/^[^a-z]*$/',
+            'semester' => 'required|numeric',
             'kartu_tanda' => 'required|max:2048',
             'nomor_hp' => 'required',
             'password' => 'required|min:8|regex:/^(?=.*[a-zA-Z])(?=.*\d).+$/',
@@ -58,9 +62,19 @@ class Registrasi extends Component
             ],
             'institusi' => [
                 "required" => 'Institusi tidak boleh kosong',
+                "regex" => 'Institusi harus diisi dengan HURUF KAPITAL (Capslock)',
             ],
             'jurusan' => [
                 "required" => 'Jurusan tidak boleh kosong',
+                "regex" => 'Jurusan harus diisi dengan HURUF KAPITAL (Capslock)',
+            ],
+            'prodi' => [
+                "required" => 'Program studi tidak boleh kosong',
+                "regex" => 'Program studi harus diisi dengan HURUF KAPITAL (Capslock)',
+            ],
+            'semester' => [
+                "required" => 'Semester tidak boleh kosong',
+                "numeric" => 'Semester harus berupa angka',
             ],
             'kartu_tanda' => [
                 "required" => 'Kartu tanda siswa/mahasiswa tidak boleh kosong',
@@ -97,8 +111,10 @@ class Registrasi extends Component
         $user->name = ucwords(strtolower(trim($validatedData['name'])));
         $user->email = $validatedData['email'];
         $user->nomor_induk = $validatedData['nomor_induk'];
-        $user->institusi = ucwords(strtolower(trim($validatedData['institusi'])));
-        $user->jurusan = ucwords(strtolower(trim($validatedData['jurusan'])));
+        $user->institusi = strtoupper(trim($validatedData['institusi']));
+        $user->jurusan = strtoupper(trim($validatedData['jurusan']));
+        $user->prodi = strtoupper(trim($validatedData['prodi']));
+        $user->semester = $validatedData['semester'];
         $user->kartu_tanda = $imagePath;
         $user->original_filename_kartu = $originalFilename;
         $user->nomor_hp = $validatedData['nomor_hp'];

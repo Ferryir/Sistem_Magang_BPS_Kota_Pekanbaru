@@ -18,8 +18,8 @@
         </div>
 
         <div>
-            <label for="bidang_tujuan" class="block mb-1 text-md font-medium text-gray-700">Bidang Tujuan<span
-                    class="text-red-500 ml-1">*</span></label>
+            <label for="bidang_tujuan" class="block mb-1 text-md font-medium text-gray-700">Bidang Tujuan <span
+                    class="text-gray-500 font-normal text-sm">(Opsional)</span></label>
             <select name="bidang_tujuan" id="bidang_tujuan" wire:model.live="bidang_tujuan"
                 class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5">
                 <option value="" disabled selected hidden>Pilih bidang yang dituju</option>

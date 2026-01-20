@@ -48,8 +48,8 @@
                                 Lihat file
                             </button>
                             <div>
-                                <input type="file" accept=".png, .jpg, .jpeg" name="kartu_penduduk"
-                                    id="kartu_penduduk" wire:model.live="kartu_penduduk" class="hidden" />
+                                <input type="file" accept=".png, .jpg, .jpeg" name="kartu_penduduk" id="kartu_penduduk"
+                                    wire:model.live="kartu_penduduk" class="hidden" />
                                 <label for="kartu_penduduk"
                                     class="px-3 py-2 text-sm text-white bg-red-600 rounded-md font-medium transition-all duration-200 hover:bg-red-200 hover:text-red-600 whitespace-nowrap cursor-pointer">
                                     Ganti file
@@ -74,8 +74,8 @@
         </div>
 
         <div>
-            <h6 class="text-[17px] font-semibold text-gray-800">Kartu Tanda Siswa/Mahasiswa<span
-                    class="text-red-500 ml-1">*</span></h6>
+            <h6 class="text-[17px] font-semibold text-gray-800">Kartu Tanda Siswa/Mahasiswa <span
+                    class="text-gray-500 font-normal text-sm">(Opsional)</span></h6>
 
             @if (!empty(Auth::user()->kartu_tanda))
                 <div
@@ -121,8 +121,8 @@
                                 Lihat file
                             </button>
                             <div>
-                                <input type="file" accept=".png, .jpg, .jpeg" name="kartu_tanda"
-                                    id="kartu_tanda" wire:model.live="kartu_tanda" class="hidden" />
+                                <input type="file" accept=".png, .jpg, .jpeg" name="kartu_tanda" id="kartu_tanda"
+                                    wire:model.live="kartu_tanda" class="hidden" />
                                 <label for="kartu_tanda"
                                     class="px-3 py-2 text-sm text-white bg-red-600 rounded-md font-medium transition-all duration-200 hover:bg-red-200 hover:text-red-600 whitespace-nowrap cursor-pointer">
                                     Ganti file

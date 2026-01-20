@@ -62,14 +62,23 @@
                         </td>
                         <td class="py-4 px-6 text-left">{{ $data->created_at->format('j-F-Y') }}</td>
                         <td class="py-4 px-6 text-center">
-                            <div
-                                class="text-[13px] mx-auto items-center w-fit">
+                            <div class="text-[13px] mx-auto items-center w-fit">
                                 @if ($data->status_pengajuan == 'waiting')
-                                    <p class="text-amber-700 border-amber-600 bg-amber-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">Menunggu</p>
+                                    <p
+                                        class="text-amber-700 border-amber-600 bg-amber-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">
+                                        Menunggu</p>
                                 @elseif($data->status_pengajuan == 'accept-first')
-                                    <p class="text-green-700 border-green-600 bg-green-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">Diterima</p>
+                                    <p
+                                        class="text-blue-700 border-blue-600 bg-blue-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">
+                                        Diproses</p>
+                                @elseif($data->status_pengajuan == 'accept-final')
+                                    <p
+                                        class="text-green-700 border-green-600 bg-green-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">
+                                        Diterima</p>
                                 @elseif($data->status_pengajuan == 'reject-time' || $data->status_pengajuan == 'reject-admin' || $data->status_pengajuan == 'reject-final')
-                                    <p class="text-red-700 border-red-600 bg-red-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">Ditolak</p>
+                                    <p
+                                        class="text-red-700 border-red-600 bg-red-50 border-2 rounded-full whitespace-nowrap px-3 py-1 ">
+                                        Ditolak</p>
                                 @endif
                             </div>
                         </td>

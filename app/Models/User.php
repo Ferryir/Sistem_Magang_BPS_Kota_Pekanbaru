@@ -30,6 +30,8 @@ class User extends Authenticatable
         'institusi',
         'kartu_tanda',
         'jurusan',
+        'prodi',
+        'semester',
         'nomor_hp'
     ];
 

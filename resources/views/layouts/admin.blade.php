@@ -86,6 +86,14 @@
                         </li>
 
                         <li class="sidebar-item">
+                            <a class="pjax-link menu-item gap-3 py-2 my-1 text-[14px] flex items-center justify-start relative rounded-md w-full transition-all duration-200 hover:text-blue-600"
+                                href="/monitor-absensi">
+                                <i class="ti ti-calendar-check ps-2 text-xl"></i>
+                                <span class="whitespace-nowrap">Monitor Presensi</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
                             <a class="menu-item gap-3 py-2 my-1 text-[14px] flex items-center justify-start relative rounded-md w-full transition-all duration-200 hover:text-blue-600"
                                 href="/logout">
                                 <i class="ti ti-logout ps-2 text-xl"></i>
@@ -156,8 +164,7 @@
                                             @if (!empty(Auth::user()->foto_profil))
                                                 <a
                                                     class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full">
-                                                    <img id=""
-                                                        src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                                                    <img id="" src="{{ Storage::url(Auth::user()->foto_profil) }}"
                                                         alt="Preview Foto Profil"
                                                         class="w-9 h-9 object-cover rounded-full outline outline-blue-600"
                                                         aria-hidden="true">
@@ -167,7 +174,8 @@
                                                     class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full bg-blue-600">
                                                     <h1
                                                         class="object-cover font-regular text-white text-lg w-9 h-9 flex items-center justify-center">
-                                                        {{ $firstLetter }}</h1>
+                                                        {{ $firstLetter }}
+                                                    </h1>
                                                 </a>
                                             @endif
                                             <div class="card hs-dropdown-menu transition-[opacity,margin] rounded-md duration hs-dropdown-open:opacity-100 opacity-0 mt-2 w-[300px] md:w-[350px] hidden z-[12] bg-white dark:bg-gray-800"
@@ -181,8 +189,7 @@
                                                     <div
                                                         class="flex items-center gap-4 mx-4 -mt-12 px-3 py-3 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-md shadow">
                                                         @if (!empty(Auth::user()->foto_profil))
-                                                            <img id=""
-                                                                src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                                                            <img id="" src="{{ Storage::url(Auth::user()->foto_profil) }}"
                                                                 alt="Preview Foto Profil"
                                                                 class="w-12 h-12 object-cover rounded-lg outline outline-blue-600">
                                                         @else
@@ -193,7 +200,8 @@
                                                         @endif
                                                         <div>
                                                             <p class="text-lg text-gray-800 font-medium">
-                                                                {{ Auth::guard('pegawai')->user()->name }}</p>
+                                                                {{ Auth::guard('pegawai')->user()->name }}
+                                                            </p>
                                                             @if (Auth::guard('pegawai')->user()->role_temp == 'admin')
                                                                 <p class="text-[12px] text-gray-600">Admin</p>
                                                             @else
@@ -264,16 +272,16 @@
             timeout: 8000
         });
 
-        $(document).on('pjax:send', function() {
+        $(document).on('pjax:send', function () {
             // Show the loader
             $('#loader').removeClass('hidden');
         });
 
-        $(document).on('pjax:complete', function() {
+        $(document).on('pjax:complete', function () {
             // Hide the loader
         });
 
-        $('a.pjax-link').on('click', function(e) {
+        $('a.pjax-link').on('click', function (e) {
             var targetUrl = $(this).attr('href');
 
             if (window.location.pathname === targetUrl) {

@@ -12,13 +12,17 @@ class EditAkademik extends Component
 
     public $nomor_induk,
     $institusi,
-    $jurusan;
+    $jurusan,
+    $prodi,
+    $semester;
 
     public function mount()
     {
         $user = Auth::user();
         $this->institusi = $user->institusi;
         $this->jurusan = $user->jurusan;
+        $this->prodi = $user->prodi;
+        $this->semester = $user->semester;
         $this->nomor_induk = $user->nomor_induk;
     }
 
@@ -28,6 +32,8 @@ class EditAkademik extends Component
             'nomor_induk' => 'required|min:5|unique:users,nomor_induk,' . Auth::id(),
             'institusi' => 'required',
             'jurusan' => 'required',
+            'prodi' => 'required',
+            'semester' => 'required|numeric',
         ];
     }
 
@@ -44,6 +50,13 @@ class EditAkademik extends Component
             ],
             'jurusan' => [
                 "required" => 'Jurusan tidak boleh kosong',
+            ],
+            'prodi' => [
+                "required" => 'Program studi tidak boleh kosong',
+            ],
+            'semester' => [
+                "required" => 'Semester tidak boleh kosong',
+                "numeric" => 'Semester harus berupa angka',
             ]
         ];
     }
@@ -56,6 +69,8 @@ class EditAkademik extends Component
         $isDataChanged =
             $user->institusi !== ucwords(strtolower(trim($this->institusi))) ||
             $user->jurusan !== ucwords(strtolower(trim($this->jurusan))) ||
+            $user->prodi !== ucwords(strtolower(trim($this->prodi))) ||
+            $user->semester !== $this->semester ||
             $user->nomor_induk !== $this->nomor_induk;
 
         if (!$isDataChanged) {
@@ -69,8 +84,10 @@ class EditAkademik extends Component
 
         // Build dynamic validation rules
         $rules = [
-            'institusi' => 'required',
-            'jurusan' => 'required',
+            'institusi' => 'required|regex:/^[^a-z]*$/',
+            'jurusan' => 'required|regex:/^[^a-z]*$/',
+            'prodi' => 'required|regex:/^[^a-z]*$/',
+            'semester' => 'required|numeric',
         ];
 
         // Add unique rule for nomor_induk if it has changed
@@ -81,11 +98,17 @@ class EditAkademik extends Component
         }
 
         // Validate data input
-        $validatedData = $this->validate($rules);
+        $validatedData = $this->validate($rules, [
+            'institusi.regex' => 'Institusi harus diisi dengan HURUF KAPITAL (Capslock)',
+            'jurusan.regex' => 'Jurusan harus diisi dengan HURUF KAPITAL (Capslock)',
+            'prodi.regex' => 'Program studi harus diisi dengan HURUF KAPITAL (Capslock)',
+        ]);
 
         // Update user data with validated data
-        $user->institusi = ucwords(strtolower(trim($validatedData['institusi'])));
-        $user->jurusan = ucwords(strtolower(trim($validatedData['jurusan'])));
+        $user->institusi = strtoupper(trim($validatedData['institusi']));
+        $user->jurusan = strtoupper(trim($validatedData['jurusan']));
+        $user->prodi = strtoupper(trim($validatedData['prodi']));
+        $user->semester = $validatedData['semester'];
         $user->nomor_induk = $validatedData['nomor_induk'];
         $user->save();
 

@@ -22,6 +22,7 @@
     <title>@yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/dashboard.js'])
     @livewireStyles
+    @stack('styles')
 </head>
 
 @php
@@ -83,6 +84,16 @@
                             </a>
                         </li>
 
+                        @if(Auth::user()->pengajuan()->where('status_pengajuan', 'accept-final')->exists())
+                            <li class="sidebar-item">
+                                <a class="pjax-link menu-item gap-3 py-2 my-1 text-[14px] flex items-center justify-start relative rounded-md w-full transition-all duration-200 hover:text-blue-600"
+                                    href="/absensi">
+                                    <i class="ti ti-calendar-check ps-2 text-xl"></i>
+                                    <span class="whitespace-nowrap">Presensi</span>
+                                </a>
+                            </li>
+                        @endif
+
                         <li class="sidebar-item">
                             <a class="pjax-link menu-item gap-3 py-2 my-1 text-[14px] flex items-center justify-start relative rounded-md w-full transition-all duration-200 hover:text-blue-600"
                                 href="/profil">
@@ -126,7 +137,8 @@
                             <nav class="w-full h-full flex items-center justify-between" aria-label="Global">
                                 <div class="text-xl dark:text-white max-xl:hidden flex items-center gap-3">
                                     <h1>Halo! <span class="font-medium">{{ Auth::user()->name }}</span></h1>
-                                    <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif"  width="28px">
+                                    <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif"
+                                        width="28px">
                                 </div>
                                 <ul class="icon-nav flex items-center gap-4">
                                     <li class="relative xl:hidden dark:text-white">
@@ -160,17 +172,18 @@
                                             @if (!empty(Auth::user()->foto_profil))
                                                 <a
                                                     class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full">
-                                                    <img id=""
-                                                        src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                                                    <img id="" src="{{ Storage::url(Auth::user()->foto_profil) }}"
                                                         alt="Preview Foto Profil"
-                                                        class="w-9 h-9 object-cover rounded-full outline outline-blue-600" aria-hidden="true">
+                                                        class="w-9 h-9 object-cover rounded-full outline outline-blue-600"
+                                                        aria-hidden="true">
                                                 </a>
                                             @else
                                                 <a
                                                     class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full bg-blue-600">
                                                     <h1
                                                         class="object-cover font-regular text-white text-lg w-9 h-9 flex items-center justify-center">
-                                                        {{ $firstLetter }}</h1>
+                                                        {{ $firstLetter }}
+                                                    </h1>
                                                 </a>
                                             @endif
                                             <div class="card hs-dropdown-menu transition-[opacity,margin] rounded-md duration hs-dropdown-open:opacity-100 opacity-0 mt-2 w-[300px] md:w-[350px] hidden z-[12] bg-white dark:bg-gray-800"
@@ -184,10 +197,9 @@
                                                     <div
                                                         class="flex items-center gap-4 mx-4 -mt-12 px-3 py-3 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-md shadow">
                                                         @if (!empty(Auth::user()->foto_profil))
-                                                            <img id=""
-                                                            src="{{ Storage::url(Auth::user()->foto_profil) }}"
-                                                            alt="Preview Foto Profil"
-                                                            class="w-12 h-12 object-cover rounded-lg outline outline-blue-600">
+                                                            <img id="" src="{{ Storage::url(Auth::user()->foto_profil) }}"
+                                                                alt="Preview Foto Profil"
+                                                                class="w-12 h-12 object-cover rounded-lg outline outline-blue-600">
                                                         @else
                                                             <h1
                                                                 class="w-12 h-12 flex items-center justify-center text-xl text-white bg-blue-600 rounded-lg">
@@ -196,7 +208,8 @@
                                                         @endif
                                                         <div>
                                                             <p class="text-lg text-gray-800 font-medium">
-                                                                {{ Auth::user()->name }}</p>
+                                                                {{ Auth::user()->name }}
+                                                            </p>
                                                             <p class="text-[12px] text-gray-600">Siswa/Mahasiswa</p>
                                                         </div>
                                                     </div>
@@ -272,16 +285,16 @@
             timeout: 8000
         });
 
-        $(document).on('pjax:send', function() {
+        $(document).on('pjax:send', function () {
             // Show the loader
             $('#loader').removeClass('hidden');
         });
 
-        $(document).on('pjax:complete', function() {
+        $(document).on('pjax:complete', function () {
             // Hide the loader
         });
 
-        $('a.pjax-link').on('click', function(e) {
+        $('a.pjax-link').on('click', function (e) {
             var targetUrl = $(this).attr('href');
 
             if (window.location.pathname === targetUrl) {
@@ -289,5 +302,5 @@
             }
         });
     </script>
-
+    @stack('scripts')
 </body>

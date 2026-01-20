@@ -117,4 +117,12 @@ class UserNormalController
             ]
         ]);
     }
+
+    public function get_absensi()
+    {
+        if (request()->pjax()) {
+            return false;
+        }
+        return view('usernormal.absensi');
+    }
 }

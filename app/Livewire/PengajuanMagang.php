@@ -26,7 +26,6 @@ class PengajuanMagang extends Component
     {
         return [
             'jenis_magang' => 'required',
-            'bidang_tujuan' => 'required',
             'tanggal_mulai' => 'required',
             'tanggal_selesai' => 'required|after:tanggal_mulai'
         ];
@@ -37,9 +36,6 @@ class PengajuanMagang extends Component
         return [
             'jenis_magang' => [
                 "required" => 'Jenis magang tidak boleh kosong',
-            ],
-            'bidang_tujuan' => [
-                "required" => 'Bidang tujuan tidak boleh kosong',
             ],
             'tanggal_mulai' => [
                 "required" => 'Tanggal mulai magang tidak boleh kosong',
@@ -62,7 +58,7 @@ class PengajuanMagang extends Component
         $pengajuan = new Pengajuan();
         $pengajuan->user_id = $user->id;
         $pengajuan->jenis_magang = $validatedData['jenis_magang'];
-        $pengajuan->bidang_tujuan = $validatedData['bidang_tujuan'];
+        $pengajuan->bidang_tujuan = $validatedData['bidang_tujuan'] ?? null;
         $pengajuan->tanggal_mulai = $validatedData['tanggal_mulai'];
         $pengajuan->tanggal_selesai = $validatedData['tanggal_selesai'];
 

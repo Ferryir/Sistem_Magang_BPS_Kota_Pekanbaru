@@ -1,9 +1,9 @@
 <form class="space-y-4 bg-white shadow px-7 py-7 rounded-lg flex flex-col gap-3" wire:submit="create_user">
-    
+
     <div>
         <h1 class="font-semibold text-2xl text-gray-800">Registrasi Akun</h1>
     </div>
-    
+
     <div class="grid md:grid-cols-2 gap-4">
 
         <div>
@@ -52,6 +52,25 @@
                 placeholder="Masukkan jurusan"
                 class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]" />
             @error('jurusan')
+                <span class="text-red-600 text-[11px]">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div>
+            <label for="prodi" class="block mb-1 text-sm font-normal">Program Studi (Prodi)</label>
+            <input type="text" name="prodi" id="prodi" wire:model.live="prodi" placeholder="Masukkan program studi"
+                class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]" />
+            @error('prodi')
+                <span class="text-red-600 text-[11px]">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div>
+            <label for="semester" class="block mb-1 text-sm font-normal">Semester Anda saat program mulai</label>
+            <input type="number" name="semester" id="semester" min="1" wire:model.live="semester"
+                placeholder="Contoh: 5"
+                class="bg-gray-50 border border-gray-500 outline-none text-gray-900 text-sm rounded-lg focus:outline-blue-500 focus:outline-2 w-full p-2.5 placeholder:text-[12px]" />
+            @error('semester')
                 <span class="text-red-600 text-[11px]">{{ $message }}</span>
             @enderror
         </div>
