@@ -24,8 +24,8 @@ class AdminController
             'accept_final' => Pengajuan::where('status_pengajuan', 'accept-final')->count(),
             'reject_admin' => Pengajuan::where('status_pengajuan', 'reject-admin')->count(),
             'reject_final' => Pengajuan::where('status_pengajuan', 'reject-final')->count(),
-            'expired' => Pengajuan::where('status_pengajuan', 'expired')->count(),
-            'total' => Pengajuan::where('status_pengajuan', '!=', 'accept-final')->count(),
+            'expired' => Pengajuan::where('status_pengajuan', 'reject-time')->count(),
+            'total' => Pengajuan::whereNotIn('status_pengajuan', ['accept-first', 'accept-final', 'reject-admin', 'reject-final', 'reject-time'])->count(),
         ];
 
         // Get today's date
@@ -219,5 +219,13 @@ class AdminController
             return false;
         }
         return view('admin.monitor-absensi');
+    }
+
+    public function get_penilaian_magang()
+    {
+        if (request()->pjax()) {
+            return false;
+        }
+        return view('admin.penilaian-magang');
     }
 }

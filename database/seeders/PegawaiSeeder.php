@@ -18,10 +18,10 @@ class PegawaiSeeder extends Seeder
         $pegawai = [
 
             // ==============
-            // Akun Admin
+            // Akun Admin 1
             // ==============
             [
-                "name" => "Lionel Messi",
+                "name" => "admin1",
                 "fungsi_bagian" => "Bagian Umum",
                 "email" => "admin@gmail.com",
                 "password" => "admin123",
@@ -29,24 +29,28 @@ class PegawaiSeeder extends Seeder
                 "role_temp" => "admin"
             ],
 
-            // ================
-            // Akun Pembimbing
-            // ================
+            // ==============
+            // Akun Admin 2
+            // ==============
             [
-                "name" => "Kylian Mbappe",
+                "name" => "admin2",
                 "fungsi_bagian" => "Fungsi IPDS",
                 "email" => "pembimbingipds1@gmail.com",
-                "password" => "regular123",
+                "password" => "admin123",
                 "nomor_induk" => "147107822341123",
-                "role_temp" => "regular"
+                "role_temp" => "admin"
             ],
+
+            // ==============
+            // Akun Admin 3
+            // ==============
             [
-                "name" => "Son Hyung Min",
+                "name" => "admin3",
                 "fungsi_bagian" => "Fungsi IPDS",
                 "email" => "pembimbingipds2@gmail.com",
-                "password" => "regular123",
+                "password" => "admin123",
                 "nomor_induk" => "147107822341124",
-                "role_temp" => "regular"
+                "role_temp" => "admin"
             ],
         ];
 

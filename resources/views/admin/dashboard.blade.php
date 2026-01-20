@@ -35,16 +35,7 @@
                 <p class="text-sm text-gray-500">Total Pengajuan</p>
             </div>
 
-            {{-- Pending --}}
-            <div class="bg-white rounded-lg border border-yellow-200 p-4 hover:shadow-md transition-all">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                        <i class="ti ti-clock text-yellow-600 text-xl"></i>
-                    </span>
-                </div>
-                <p class="text-3xl font-bold text-yellow-600">{{ $pengajuanStats['pending'] }}</p>
-                <p class="text-sm text-gray-500">Pending</p>
-            </div>
+
 
             {{-- Accept First --}}
             <div class="bg-white rounded-lg border border-blue-200 p-4 hover:shadow-md transition-all">
@@ -68,16 +59,7 @@
                 <p class="text-sm text-gray-500">Diterima Final</p>
             </div>
 
-            {{-- Reject Admin --}}
-            <div class="bg-white rounded-lg border border-orange-200 p-4 hover:shadow-md transition-all">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
-                        <i class="ti ti-x text-orange-600 text-xl"></i>
-                    </span>
-                </div>
-                <p class="text-3xl font-bold text-orange-600">{{ $pengajuanStats['reject_admin'] }}</p>
-                <p class="text-sm text-gray-500">Ditolak Admin</p>
-            </div>
+
 
             {{-- Reject Final --}}
             <div class="bg-white rounded-lg border border-red-200 p-4 hover:shadow-md transition-all">
@@ -87,7 +69,7 @@
                     </span>
                 </div>
                 <p class="text-3xl font-bold text-red-600">{{ $pengajuanStats['reject_final'] }}</p>
-                <p class="text-sm text-gray-500">Ditolak Final</p>
+                <p class="text-sm text-gray-500">Ditolak</p>
             </div>
 
             {{-- Expired --}}

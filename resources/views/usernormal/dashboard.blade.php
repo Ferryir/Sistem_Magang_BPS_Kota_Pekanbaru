@@ -371,6 +371,72 @@
         </div>
     </div>
 
+    {{-- Section Penilaian Magang --}}
+    @php
+        $penilaian = \App\Models\PenilaianMagang::where('user_id', Auth::id())->first();
+    @endphp
+    @if ($penilaian && $penilaian->nilai_akhir !== null)
+        {{-- Congratulations Banner --}}
+        <div class="grid grid-cols-1 mt-6 lg:grid-cols-1">
+            <div class="col-span-1 card rounded-lg bg-gradient-to-r from-green-500 to-green-600 p-5 h-full">
+                <div class="flex gap-3 items-center text-white">
+                    <i class="ti ti-confetti text-4xl"></i>
+                    <div>
+                        <p class="text-xl font-bold">Selamat! Hasil Penilaian Magang Kamu sudah terbit</p>
+                        <p class="text-sm text-green-100">Terima kasih atas kontribusimu selama program magang</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 mt-6 lg:grid-cols-1 lg:gap-x-6 gap-x-0 lg:gap-y-0 gap-y-6">
+            <div class="col-span-1 card rounded-lg bg-white p-6 h-full dark:bg-[#14181b] transition-all duration-200">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="ti ti-certificate text-blue-500"></i>
+                    Hasil Penilaian Magang
+                </h3>
+
+                {{-- Nilai Akhir --}}
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 mb-4 text-center">
+                    <p class="text-white text-sm mb-1">Nilai Akhir</p>
+                    <p class="text-white text-4xl font-bold">{{ number_format($penilaian->nilai_akhir, 2) }}</p>
+                </div>
+
+                {{-- 5 Aspek Penilaian --}}
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-4">
+                    <div class="bg-gray-50 rounded-lg p-3 text-center border">
+                        <p class="text-xs text-gray-500 mb-1">Sikap & Etika</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ $penilaian->sikap_etika }}</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 text-center border">
+                        <p class="text-xs text-gray-500 mb-1">Kemampuan Teknis</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ $penilaian->kemampuan_teknis }}</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 text-center border">
+                        <p class="text-xs text-gray-500 mb-1">Kemauan Belajar</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ $penilaian->kemauan_belajar }}</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 text-center border">
+                        <p class="text-xs text-gray-500 mb-1">Kualitas Kerja</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ $penilaian->kualitas_kerja }}</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 text-center border">
+                        <p class="text-xs text-gray-500 mb-1">Komunikasi</p>
+                        <p class="text-2xl font-bold text-gray-800">{{ $penilaian->komunikasi_kerjasama }}</p>
+                    </div>
+                </div>
+
+                {{-- Catatan --}}
+                @if ($penilaian->catatan)
+                    <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                        <p class="text-sm text-blue-600 font-medium mb-1"><i class="ti ti-note mr-1"></i>Catatan dari Penilai:</p>
+                        <p class="text-gray-700">{{ $penilaian->catatan }}</p>
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             @if (
@@ -521,95 +587,95 @@
                 @endif
             {{ --Jika status accept - final, semua step harus biru-- }
         }
-                        @if(!is_null($latestPengajuan) && $latestPengajuan->status_pengajuan === 'accept-final')
-                                                                var step1 = document.querySelector('.step1-active');
-                            var step2 = document.querySelector('.step2-active');
-                            var step3 = document.querySelector('.step3-active');
-                            var step4 = document.querySelector('.step4-active');
+                            @if(!is_null($latestPengajuan) && $latestPengajuan->status_pengajuan === 'accept-final')
+                                                                                            var step1 = document.querySelector('.step1-active');
+                                var step2 = document.querySelector('.step2-active');
+                                var step3 = document.querySelector('.step3-active');
+                                var step4 = document.querySelector('.step4-active');
 
-                            // Step 1 - Profil
-                            if (step1) {
-                                step1.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                step1.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                var span = step1.querySelector('span');
-                                var div = step1.querySelector('#tooltip-profil');
-                                if (span) {
-                                    span.classList.remove('bg-gray-100');
-                                    span.classList.add('bg-blue-600');
+                                // Step 1 - Profil
+                                if (step1) {
+                                    step1.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                    step1.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                    var span = step1.querySelector('span');
+                                    var div = step1.querySelector('#tooltip-profil');
+                                    if (span) {
+                                        span.classList.remove('bg-gray-100');
+                                        span.classList.add('bg-blue-600');
+                                    }
+                                    if (div) {
+                                        div.classList.remove('bg-white', 'text-gray-600');
+                                        div.classList.add('bg-blue-600', 'text-white');
+                                    }
+                                    var icon = step1.querySelector('i');
+                                    if (icon) {
+                                        icon.classList.remove('text-gray-500');
+                                        icon.classList.add('text-white');
+                                    }
                                 }
-                                if (div) {
-                                    div.classList.remove('bg-white', 'text-gray-600');
-                                    div.classList.add('bg-blue-600', 'text-white');
-                                }
-                                var icon = step1.querySelector('i');
-                                if (icon) {
-                                    icon.classList.remove('text-gray-500');
-                                    icon.classList.add('text-white');
-                                }
-                            }
 
-                            // Step 2 - Pengajuan
-                            if (step2) {
-                                step2.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                step2.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                var span = step2.querySelector('span');
-                                var div = step2.querySelector('#tooltip-pengajuan');
-                                if (span) {
-                                    span.classList.remove('bg-gray-100');
-                                    span.classList.add('bg-blue-600');
+                                // Step 2 - Pengajuan
+                                if (step2) {
+                                    step2.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                    step2.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                    var span = step2.querySelector('span');
+                                    var div = step2.querySelector('#tooltip-pengajuan');
+                                    if (span) {
+                                        span.classList.remove('bg-gray-100');
+                                        span.classList.add('bg-blue-600');
+                                    }
+                                    if (div) {
+                                        div.classList.remove('bg-white', 'text-gray-600');
+                                        div.classList.add('bg-blue-600', 'text-white');
+                                    }
+                                    var icon = step2.querySelector('i');
+                                    if (icon) {
+                                        icon.classList.remove('text-gray-500');
+                                        icon.classList.add('text-white');
+                                    }
                                 }
-                                if (div) {
-                                    div.classList.remove('bg-white', 'text-gray-600');
-                                    div.classList.add('bg-blue-600', 'text-white');
-                                }
-                                var icon = step2.querySelector('i');
-                                if (icon) {
-                                    icon.classList.remove('text-gray-500');
-                                    icon.classList.add('text-white');
-                                }
-                            }
 
-                            // Step 3 - Lolos Seleksi
-                            if (step3) {
-                                step3.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                step3.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                var span = step3.querySelector('span');
-                                var div = step3.querySelector('#tooltip-diterima');
-                                if (span) {
-                                    span.classList.remove('bg-gray-100');
-                                    span.classList.add('bg-blue-600');
+                                // Step 3 - Lolos Seleksi
+                                if (step3) {
+                                    step3.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                    step3.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                    var span = step3.querySelector('span');
+                                    var div = step3.querySelector('#tooltip-diterima');
+                                    if (span) {
+                                        span.classList.remove('bg-gray-100');
+                                        span.classList.add('bg-blue-600');
+                                    }
+                                    if (div) {
+                                        div.classList.remove('bg-white', 'text-gray-600');
+                                        div.classList.add('bg-blue-600', 'text-white');
+                                    }
+                                    var icon = step3.querySelector('i');
+                                    if (icon) {
+                                        icon.classList.remove('text-gray-500');
+                                        icon.classList.add('text-white');
+                                    }
                                 }
-                                if (div) {
-                                    div.classList.remove('bg-white', 'text-gray-600');
-                                    div.classList.add('bg-blue-600', 'text-white');
-                                }
-                                var icon = step3.querySelector('i');
-                                if (icon) {
-                                    icon.classList.remove('text-gray-500');
-                                    icon.classList.add('text-white');
-                                }
-                            }
 
-                            // Step 4 - Surat Pengantar
-                            if (step4) {
-                                var span = step4.querySelector('span');
-                                var div = step4.querySelector('#tooltip-surat-pengantar');
-                                if (span) {
-                                    span.classList.remove('bg-gray-100');
-                                    span.classList.add('bg-blue-600');
+                                // Step 4 - Surat Pengantar
+                                if (step4) {
+                                    var span = step4.querySelector('span');
+                                    var div = step4.querySelector('#tooltip-surat-pengantar');
+                                    if (span) {
+                                        span.classList.remove('bg-gray-100');
+                                        span.classList.add('bg-blue-600');
+                                    }
+                                    if (div) {
+                                        div.classList.remove('bg-white', 'text-gray-600');
+                                        div.classList.add('bg-blue-600', 'text-white');
+                                    }
+                                    var icon = step4.querySelector('i');
+                                    if (icon) {
+                                        icon.classList.remove('text-gray-500');
+                                        icon.classList.add('text-white');
+                                    }
                                 }
-                                if (div) {
-                                    div.classList.remove('bg-white', 'text-gray-600');
-                                    div.classList.add('bg-blue-600', 'text-white');
-                                }
-                                var icon = step4.querySelector('i');
-                                if (icon) {
-                                    icon.classList.remove('text-gray-500');
-                                    icon.classList.add('text-white');
-                                }
-                            }
-                        @endif
-                    });
+                            @endif
+                        });
     </script>
 
 @endsection
