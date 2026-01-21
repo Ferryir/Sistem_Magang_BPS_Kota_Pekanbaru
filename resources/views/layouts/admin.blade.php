@@ -102,6 +102,14 @@
                         </li>
 
                         <li class="sidebar-item">
+                            <a class="pjax-link menu-item gap-3 py-2 my-1 text-[14px] flex items-center justify-start relative rounded-md w-full transition-all duration-200 hover:text-blue-600"
+                                href="/generate-sertifikat">
+                                <i class="ti ti-file-certificate ps-2 text-xl"></i>
+                                <span class="whitespace-nowrap">Generate Sertifikat</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
                             <a class="menu-item gap-3 py-2 my-1 text-[14px] flex items-center justify-start relative rounded-md w-full transition-all duration-200 hover:text-blue-600"
                                 href="/logout">
                                 <i class="ti ti-logout ps-2 text-xl"></i>
@@ -116,7 +124,7 @@
         <!-- -------------- -->
         <!-- Layout Main -->
         <!-- -------------- -->
-        <div class="w-full page-wrapper xl:px-6 px-0">
+        <div class="flex-1 page-wrapper xl:px-6 px-0 xl:ml-64">
             <!-- Main Content -->
             <main class="h-full max-w-full">
                 <div class="full-container p-0 flex flex-col gap-6">

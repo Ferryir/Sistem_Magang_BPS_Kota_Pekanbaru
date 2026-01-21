@@ -374,16 +374,68 @@
     {{-- Section Penilaian Magang --}}
     @php
         $penilaian = \App\Models\PenilaianMagang::where('user_id', Auth::id())->first();
+        $sertifikat = \App\Models\Sertifikat::where('user_id', Auth::id())->first();
     @endphp
+
+    {{-- Section Sertifikat --}}
+    @if ($sertifikat)
+        {{-- Congratulations Banner for Certificate --}}
+        <div class="grid grid-cols-1 mt-6 lg:grid-cols-1">
+            <div class="col-span-1 card rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 p-5 h-full">
+                <div class="flex gap-3 items-center">
+                    <i class="ti ti-trophy text-4xl" style="color: white;"></i>
+                    <div>
+                        <p class="text-xl font-bold" style="color: white;">Selamat! Sertifikat Magang Kamu sudah terbit</p>
+                        <p class="text-sm" style="color: #fef3c7;">Silakan download sertifikat kamu sebagai bukti kelulusan
+                            magang</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Certificate Download Card --}}
+        <div class="grid grid-cols-1 mt-6 lg:grid-cols-1 lg:gap-x-6 gap-x-0 lg:gap-y-0 gap-y-6">
+            <div class="col-span-1 card rounded-lg bg-white p-6 h-full dark:bg-[#14181b] transition-all duration-200">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <i class="ti ti-certificate-2 text-amber-500"></i>
+                    Sertifikat Kelulusan Magang
+                </h3>
+
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-6 border border-gray-200">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-amber-100 p-4 rounded-lg">
+                                <i class="ti ti-file-certificate text-4xl text-amber-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-lg font-bold text-gray-800">{{ $sertifikat->nomor_sertifikat }}</p>
+                                <p class="text-sm text-gray-500">Diterbitkan:
+                                    {{ \Carbon\Carbon::parse($sertifikat->tanggal_terbit)->locale('id')->isoFormat('D MMMM Y') }}
+                                </p>
+                            </div>
+                        </div>
+                        <a href="{{ asset('storage/' . $sertifikat->file_path) }}" target="_blank"
+                            class="bg-green-500 hover:bg-green-600 font-bold py-3 px-6 rounded-lg flex items-center gap-2 transition-all duration-200"
+                            style="color: white !important;">
+                            <i class="ti ti-download"></i>
+                            Download Sertifikat
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if ($penilaian && $penilaian->nilai_akhir !== null)
         {{-- Congratulations Banner --}}
         <div class="grid grid-cols-1 mt-6 lg:grid-cols-1">
             <div class="col-span-1 card rounded-lg bg-gradient-to-r from-green-500 to-green-600 p-5 h-full">
-                <div class="flex gap-3 items-center text-white">
-                    <i class="ti ti-confetti text-4xl"></i>
+                <div class="flex gap-3 items-center">
+                    <i class="ti ti-confetti text-4xl" style="color: #22c55e;"></i>
                     <div>
-                        <p class="text-xl font-bold">Selamat! Hasil Penilaian Magang Kamu sudah terbit</p>
-                        <p class="text-sm text-green-100">Terima kasih atas kontribusimu selama program magang</p>
+                        <p class="text-xl font-bold" style="color: #22c55e;">Selamat! Hasil Penilaian Magang Kamu sudah terbit
+                        </p>
+                        <p class="text-sm" style="color: #16a34a;">Terima kasih atas kontribusimu selama program magang</p>
                     </div>
                 </div>
             </div>
@@ -587,95 +639,95 @@
                 @endif
             {{ --Jika status accept - final, semua step harus biru-- }
         }
-                            @if(!is_null($latestPengajuan) && $latestPengajuan->status_pengajuan === 'accept-final')
-                                                                                            var step1 = document.querySelector('.step1-active');
-                                var step2 = document.querySelector('.step2-active');
-                                var step3 = document.querySelector('.step3-active');
-                                var step4 = document.querySelector('.step4-active');
+                                        @if(!is_null($latestPengajuan) && $latestPengajuan->status_pengajuan === 'accept-final')
+                                                                                                                                                                                                        var step1 = document.querySelector('.step1-active');
+                                            var step2 = document.querySelector('.step2-active');
+                                            var step3 = document.querySelector('.step3-active');
+                                            var step4 = document.querySelector('.step4-active');
 
-                                // Step 1 - Profil
-                                if (step1) {
-                                    step1.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                    step1.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                    var span = step1.querySelector('span');
-                                    var div = step1.querySelector('#tooltip-profil');
-                                    if (span) {
-                                        span.classList.remove('bg-gray-100');
-                                        span.classList.add('bg-blue-600');
-                                    }
-                                    if (div) {
-                                        div.classList.remove('bg-white', 'text-gray-600');
-                                        div.classList.add('bg-blue-600', 'text-white');
-                                    }
-                                    var icon = step1.querySelector('i');
-                                    if (icon) {
-                                        icon.classList.remove('text-gray-500');
-                                        icon.classList.add('text-white');
-                                    }
-                                }
+                                            // Step 1 - Profil
+                                            if (step1) {
+                                                step1.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                                step1.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                                var span = step1.querySelector('span');
+                                                var div = step1.querySelector('#tooltip-profil');
+                                                if (span) {
+                                                    span.classList.remove('bg-gray-100');
+                                                    span.classList.add('bg-blue-600');
+                                                }
+                                                if (div) {
+                                                    div.classList.remove('bg-white', 'text-gray-600');
+                                                    div.classList.add('bg-blue-600', 'text-white');
+                                                }
+                                                var icon = step1.querySelector('i');
+                                                if (icon) {
+                                                    icon.classList.remove('text-gray-500');
+                                                    icon.classList.add('text-white');
+                                                }
+                                            }
 
-                                // Step 2 - Pengajuan
-                                if (step2) {
-                                    step2.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                    step2.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                    var span = step2.querySelector('span');
-                                    var div = step2.querySelector('#tooltip-pengajuan');
-                                    if (span) {
-                                        span.classList.remove('bg-gray-100');
-                                        span.classList.add('bg-blue-600');
-                                    }
-                                    if (div) {
-                                        div.classList.remove('bg-white', 'text-gray-600');
-                                        div.classList.add('bg-blue-600', 'text-white');
-                                    }
-                                    var icon = step2.querySelector('i');
-                                    if (icon) {
-                                        icon.classList.remove('text-gray-500');
-                                        icon.classList.add('text-white');
-                                    }
-                                }
+                                            // Step 2 - Pengajuan
+                                            if (step2) {
+                                                step2.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                                step2.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                                var span = step2.querySelector('span');
+                                                var div = step2.querySelector('#tooltip-pengajuan');
+                                                if (span) {
+                                                    span.classList.remove('bg-gray-100');
+                                                    span.classList.add('bg-blue-600');
+                                                }
+                                                if (div) {
+                                                    div.classList.remove('bg-white', 'text-gray-600');
+                                                    div.classList.add('bg-blue-600', 'text-white');
+                                                }
+                                                var icon = step2.querySelector('i');
+                                                if (icon) {
+                                                    icon.classList.remove('text-gray-500');
+                                                    icon.classList.add('text-white');
+                                                }
+                                            }
 
-                                // Step 3 - Lolos Seleksi
-                                if (step3) {
-                                    step3.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                    step3.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                    var span = step3.querySelector('span');
-                                    var div = step3.querySelector('#tooltip-diterima');
-                                    if (span) {
-                                        span.classList.remove('bg-gray-100');
-                                        span.classList.add('bg-blue-600');
-                                    }
-                                    if (div) {
-                                        div.classList.remove('bg-white', 'text-gray-600');
-                                        div.classList.add('bg-blue-600', 'text-white');
-                                    }
-                                    var icon = step3.querySelector('i');
-                                    if (icon) {
-                                        icon.classList.remove('text-gray-500');
-                                        icon.classList.add('text-white');
-                                    }
-                                }
+                                            // Step 3 - Lolos Seleksi
+                                            if (step3) {
+                                                step3.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                                step3.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                                var span = step3.querySelector('span');
+                                                var div = step3.querySelector('#tooltip-diterima');
+                                                if (span) {
+                                                    span.classList.remove('bg-gray-100');
+                                                    span.classList.add('bg-blue-600');
+                                                }
+                                                if (div) {
+                                                    div.classList.remove('bg-white', 'text-gray-600');
+                                                    div.classList.add('bg-blue-600', 'text-white');
+                                                }
+                                                var icon = step3.querySelector('i');
+                                                if (icon) {
+                                                    icon.classList.remove('text-gray-500');
+                                                    icon.classList.add('text-white');
+                                                }
+                                            }
 
-                                // Step 4 - Surat Pengantar
-                                if (step4) {
-                                    var span = step4.querySelector('span');
-                                    var div = step4.querySelector('#tooltip-surat-pengantar');
-                                    if (span) {
-                                        span.classList.remove('bg-gray-100');
-                                        span.classList.add('bg-blue-600');
-                                    }
-                                    if (div) {
-                                        div.classList.remove('bg-white', 'text-gray-600');
-                                        div.classList.add('bg-blue-600', 'text-white');
-                                    }
-                                    var icon = step4.querySelector('i');
-                                    if (icon) {
-                                        icon.classList.remove('text-gray-500');
-                                        icon.classList.add('text-white');
-                                    }
-                                }
-                            @endif
-                        });
+                                            // Step 4 - Surat Pengantar
+                                            if (step4) {
+                                                var span = step4.querySelector('span');
+                                                var div = step4.querySelector('#tooltip-surat-pengantar');
+                                                if (span) {
+                                                    span.classList.remove('bg-gray-100');
+                                                    span.classList.add('bg-blue-600');
+                                                }
+                                                if (div) {
+                                                    div.classList.remove('bg-white', 'text-gray-600');
+                                                    div.classList.add('bg-blue-600', 'text-white');
+                                                }
+                                                var icon = step4.querySelector('i');
+                                                if (icon) {
+                                                    icon.classList.remove('text-gray-500');
+                                                    icon.classList.add('text-white');
+                                                }
+                                            }
+                                        @endif
+                                    });
     </script>
 
 @endsection

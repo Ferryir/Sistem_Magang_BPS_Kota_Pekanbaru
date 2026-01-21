@@ -44,4 +44,5 @@ Route::group(['middleware' => ['admin', 'no-cache']], function () {
     Route::post('tolak-final/{id}', [AdminController::class, 'tolak_final'])->name('admin.tolak-final');
     Route::get('monitor-absensi', [AdminController::class, 'get_monitor_absensi'])->name('admin.monitor-absensi');
     Route::get('penilaian-magang', [AdminController::class, 'get_penilaian_magang'])->name('admin.penilaian-magang');
+    Route::get('generate-sertifikat', [AdminController::class, 'get_generate_sertifikat'])->name('admin.generate-sertifikat');
 });

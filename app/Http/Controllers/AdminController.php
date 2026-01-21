@@ -25,7 +25,7 @@ class AdminController
             'reject_admin' => Pengajuan::where('status_pengajuan', 'reject-admin')->count(),
             'reject_final' => Pengajuan::where('status_pengajuan', 'reject-final')->count(),
             'expired' => Pengajuan::where('status_pengajuan', 'reject-time')->count(),
-            'total' => Pengajuan::whereNotIn('status_pengajuan', ['accept-first', 'accept-final', 'reject-admin', 'reject-final', 'reject-time'])->count(),
+            'total' => Pengajuan::whereNotIn('status_pengajuan', ['accept-first', 'accept-final', 'selesai', 'reject-admin', 'reject-final', 'reject-time'])->count(),
         ];
 
         // Get today's date
@@ -227,5 +227,13 @@ class AdminController
             return false;
         }
         return view('admin.penilaian-magang');
+    }
+
+    public function get_generate_sertifikat()
+    {
+        if (request()->pjax()) {
+            return false;
+        }
+        return view('admin.generate-sertifikat');
     }
 }

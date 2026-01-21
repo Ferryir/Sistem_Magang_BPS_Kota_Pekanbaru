@@ -117,7 +117,7 @@
         <!-- -------------- -->
         <!-- Layout Main -->
         <!-- -------------- -->
-        <div class="w-full page-wrapper xl:px-6 px-0">
+        <div class="flex-1 page-wrapper xl:px-6 px-0 xl:ml-64">
             <!-- Main Content -->
             <main class="h-full max-w-full">
                 <div class="full-container p-0 flex flex-col gap-6">

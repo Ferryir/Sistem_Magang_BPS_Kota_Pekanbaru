@@ -59,8 +59,6 @@
                 <p class="text-sm text-gray-500">Diterima Final</p>
             </div>
 
-
-
             {{-- Reject Final --}}
             <div class="bg-white rounded-lg border border-red-200 p-4 hover:shadow-md transition-all">
                 <div class="flex items-center justify-between mb-2">

@@ -24,7 +24,7 @@ class PegawaiSeeder extends Seeder
                 "name" => "admin1",
                 "fungsi_bagian" => "Bagian Umum",
                 "email" => "admin@gmail.com",
-                "password" => "admin123",
+                "password" => "jawejawe123",
                 "nomor_induk" => "147107822341122",
                 "role_temp" => "admin"
             ],
@@ -36,7 +36,7 @@ class PegawaiSeeder extends Seeder
                 "name" => "admin2",
                 "fungsi_bagian" => "Fungsi IPDS",
                 "email" => "pembimbingipds1@gmail.com",
-                "password" => "admin123",
+                "password" => "jawejawe123",
                 "nomor_induk" => "147107822341123",
                 "role_temp" => "admin"
             ],
@@ -48,7 +48,7 @@ class PegawaiSeeder extends Seeder
                 "name" => "admin3",
                 "fungsi_bagian" => "Fungsi IPDS",
                 "email" => "pembimbingipds2@gmail.com",
-                "password" => "admin123",
+                "password" => "jawejawe123",
                 "nomor_induk" => "147107822341124",
                 "role_temp" => "admin"
             ],

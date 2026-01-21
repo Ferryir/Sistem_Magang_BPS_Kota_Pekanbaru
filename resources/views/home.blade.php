@@ -8,7 +8,7 @@
     <script>
         document.documentElement.classList.add('js')
     </script>
-    <title>Simagang</title>
+    <title>Magang BPS Kota Pekanbaru</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -121,96 +121,155 @@
             <p class="font-light text-white text-[14px] md:text-[18px] delay-[600ms] duration-[600ms] taos:translate-x-[-200px] taos:opacity-0"
                 data-taos-offset="100">Daftarkan diri untuk mengikuti program magang yang ditawarkan oleh <br> Badan
                 Pusat Statistik Kota Pekanbaru. Kembangkan potensi diri <br> bersama statistisi berpengalaman.</p>
-            <div
-                >
+            <div>
                 <a href="{{ Auth::check() ? '/dashboard' : '/login' }}"
-                    class="rounded-[10px] w-full md:px-9 py-3 bg-blue-600 text-white text-[14px] whitespace-nowrap transition duration-300 ease-in-out hover:bg-blue-500">Daftar Sekarang</a>
+                    class="rounded-[10px] w-full md:px-9 py-3 bg-blue-600 text-white text-[14px] whitespace-nowrap transition duration-300 ease-in-out hover:bg-blue-500">Daftar
+                    Sekarang</a>
             </div>
         </div>
     </section>
 
     {{-- Alur Pendaftaran Magang section --}}
-    <section id="alur-pendaftaran" class="relative w-full h-fit px-4 py-10 md:px-[10%] md:py-16 bg-gray-100">
-        <div class="text-center mb-12">
-            <h1 class="text-[#373737] text-[26px] md:text-[36px] font-bold mb-3">Alur Pendaftaran Magang</h1>
-            <p class="text-gray-500 text-[14px] md:text-[16px]">Ikuti langkah-langkah berikut untuk mendaftar program magang di BPS Kota Pekanbaru</p>
-        </div>
+    <section id="alur-pendaftaran"
+        class="w-full px-4 py-20 md:px-[6%] md:py-28 bg-gradient-to-b from-slate-100 to-blue-100">
 
-        {{-- Timeline Steps --}}
-        <div class="relative">
-            {{-- Horizontal line for desktop --}}
-            <div class="hidden md:block absolute top-[60px] left-[10%] right-[10%] h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 rounded-full"></div>
+        {{-- Main Container with Frame --}}
+        <div
+            class="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-blue-200 relative overflow-hidden">
 
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
+            {{-- Decorative Corner Elements --}}
+            <div
+                class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-600 opacity-10 rounded-br-full">
+            </div>
+            <div
+                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-500 to-blue-600 opacity-10 rounded-bl-full">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-500 to-blue-600 opacity-10 rounded-tr-full">
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-500 to-blue-600 opacity-10 rounded-tl-full">
+            </div>
+
+            {{-- Top Border Gradient Line --}}
+            <div
+                class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-800 via-blue-500 to-blue-400 rounded-t-3xl">
+            </div>
+
+            {{-- Header --}}
+            <div class="text-center mb-16 relative z-10">
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 text-blue-800">
+                    Alur Pendaftaran Magang
+                </h1>
+                <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+                    Hanya <span class="font-bold text-blue-600">5 langkah mudah</span> untuk memulai program magang
+                </p>
+            </div>
+
+            {{-- Steps Grid --}}
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 relative z-10">
+
                 {{-- Step 1 --}}
-                <div class="flex flex-col items-center text-center group delay-[100ms] duration-[600ms] taos:translate-y-[50px] taos:opacity-0" data-taos-offset="100">
-                    <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-[28px] md:text-[36px] font-bold shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110 z-10">
-                        1
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-md w-full transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
-                        <i class="fa-solid fa-user-plus text-blue-600 text-[24px] mb-3"></i>
-                        <h3 class="font-semibold text-[16px] text-gray-700 mb-2">Buat Akun</h3>
-                        <p class="text-gray-500 text-[13px]">Daftar akun baru dengan email aktif dan lengkapi data diri</p>
+                <div class="group">
+                    <div
+                        class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+                        {{-- Number --}}
+                        <div
+                            class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <span class="text-blue-600 font-bold text-xl">1</span>
+                        </div>
+                        {{-- Icon --}}
+                        <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-user-plus text-white text-2xl"></i>
+                        </div>
+                        {{-- Content --}}
+                        <h3 class="text-white font-bold text-lg mb-2 text-center">Buat Akun</h3>
+                        <p class="text-blue-100 text-sm text-center">Daftar dengan email aktif</p>
                     </div>
                 </div>
 
                 {{-- Step 2 --}}
-                <div class="flex flex-col items-center text-center group delay-[200ms] duration-[600ms] taos:translate-y-[50px] taos:opacity-0" data-taos-offset="100">
-                    <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-[28px] md:text-[36px] font-bold shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110 z-10">
-                        2
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-md w-full transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
-                        <i class="fa-solid fa-edit text-blue-600 text-[24px] mb-3"></i>
-                        <h3 class="font-semibold text-[16px] text-gray-700 mb-2">Isi Formulir</h3>
-                        <p class="text-gray-500 text-[13px]">Lengkapi formulir pengajuan magang dengan data yang valid</p>
+                <div class="group">
+                    <div
+                        class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+                        <div
+                            class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <span class="text-blue-600 font-bold text-xl">2</span>
+                        </div>
+                        <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-file-pen text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2 text-center">Isi Formulir</h3>
+                        <p class="text-blue-100 text-sm text-center">Lengkapi data pendaftaran</p>
                     </div>
                 </div>
 
                 {{-- Step 3 --}}
-                <div class="flex flex-col items-center text-center group delay-[300ms] duration-[600ms] taos:translate-y-[50px] taos:opacity-0" data-taos-offset="100">
-                    <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-[28px] md:text-[36px] font-bold shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110 z-10">
-                        3
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-md w-full transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
-                        <i class="fa-solid fa-cloud-arrow-up text-blue-600 text-[24px] mb-3"></i>
-                        <h3 class="font-semibold text-[16px] text-gray-700 mb-2">Upload Dokumen</h3>
-                        <p class="text-gray-500 text-[13px]">Unggah surat pengantar, CV, dan dokumen pendukung lainnya</p>
+                <div class="group">
+                    <div
+                        class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+                        <div
+                            class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <span class="text-blue-600 font-bold text-xl">3</span>
+                        </div>
+                        <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-cloud-arrow-up text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2 text-center">Upload Dokumen</h3>
+                        <p class="text-blue-100 text-sm text-center">Unggah persyaratan</p>
                     </div>
                 </div>
 
                 {{-- Step 4 --}}
-                <div class="flex flex-col items-center text-center group delay-[400ms] duration-[600ms] taos:translate-y-[50px] taos:opacity-0" data-taos-offset="100">
-                    <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-[28px] md:text-[36px] font-bold shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110 z-10">
-                        4
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-md w-full transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
-                        <i class="fa-solid fa-hourglass-half text-blue-600 text-[24px] mb-3"></i>
-                        <h3 class="font-semibold text-[16px] text-gray-700 mb-2">Proses Seleksi</h3>
-                        <p class="text-gray-500 text-[13px]">Tunggu proses verifikasi dan seleksi dari tim BPS</p>
+                <div class="group">
+                    <div
+                        class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+                        <div
+                            class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <span class="text-blue-600 font-bold text-xl">4</span>
+                        </div>
+                        <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-magnifying-glass-chart text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2 text-center">Verifikasi</h3>
+                        <p class="text-blue-100 text-sm text-center">Proses review dokumen</p>
                     </div>
                 </div>
 
                 {{-- Step 5 --}}
-                <div class="flex flex-col items-center text-center group delay-[500ms] duration-[600ms] taos:translate-y-[50px] taos:opacity-0" data-taos-offset="100">
-                    <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white text-[28px] md:text-[36px] font-bold shadow-lg mb-4 transition-transform duration-300 group-hover:scale-110 z-10">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-md w-full transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2 border-2 border-green-500">
-                        <i class="fa-solid fa-briefcase text-green-600 text-[24px] mb-3"></i>
-                        <h3 class="font-semibold text-[16px] text-gray-700 mb-2">Mulai Magang</h3>
-                        <p class="text-gray-500 text-[13px]">Selamat! Anda diterima dan siap memulai program magang</p>
+                <div class="group">
+                    <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 h-full ring-4 ring-blue-200">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                            <i class="fa-solid fa-check text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-briefcase text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-lg mb-2 text-center">Mulai Magang!</h3>
+                        <p class="text-blue-100 text-sm text-center">Selamat bergabung</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
+            </div>
+
+            {{-- CTA Button --}}
+            <div class="mt-12 text-center relative z-10">
+                <a href="{{ Auth::check() ? '/dashboard' : '/login' }}"
+                    class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold px-10 py-4 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <span class="text-lg">Daftar Sekarang</span>
+                    <i class="fa-solid fa-arrow-right text-xl"></i>
+                </a>
+            </div>
+
+        </div>
     </section>
+
 
     {{-- About section --}}
     <section class="w-full">
         <div class="m-0 p-0 w-full h-[75vh] absolute gradient-overlay-about z-0 parallax-about">
-            {{-- <img src="{{ asset('assets/home/beranda/BPS.jpg') }}" alt="BPS image"
-                class="object-cover w-full h-full"> --}}
+            <img src="{{ asset('assets/home/about/about.jpg') }}" alt="BPS image"
+                class="object-cover w-full h-full">
         </div>
         <div class="relative px-[20px] md:px-[10%] h-[75vh] flex flex-col items-start text-start justify-center gap-8">
             <h1 class="font-bold text-white text-[33px] md:text-[36px] lg:text-[49px] leading-snug delay-[300ms] duration-[600ms] taos:translate-x-[-200px] taos:opacity-0"
