@@ -1,4 +1,4 @@
-# SIMAGANG - Sistem Informasi Magang BPS Kota Pekanbaru
+# Magang BPS Kota Pekanbaru - Sistem Informasi Magang BPS Kota Pekanbaru
 
 <p align="center">
     <img src="public/assets/bps-logo.svg" alt="BPS Logo" width="200">
