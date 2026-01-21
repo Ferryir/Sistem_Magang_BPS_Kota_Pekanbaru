@@ -18,22 +18,29 @@ class UploadSuratPengantar extends Component
     public function rules()
     {
         return [
-            'surat_pengantar' => 'max:2048'
+            'surat_pengantar' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048'
         ];
     }
 
     public function messages()
     {
         return [
-            'surat_pengantar' => [
-                "max" => 'File tidak boleh lebih dari 2mb'
-            ]
+            'surat_pengantar.required' => 'Surat pengantar wajib diupload',
+            'surat_pengantar.file' => 'File tidak valid',
+            'surat_pengantar.mimes' => 'File harus berformat PDF, JPG, JPEG, atau PNG',
+            'surat_pengantar.max' => 'File tidak boleh lebih dari 2MB'
         ];
     }
 
     public function upload_surat_pengantar()
     {
         $this->validate();
+
+        // Check if file exists
+        if (!$this->surat_pengantar) {
+            $this->addError('surat_pengantar', 'Surat pengantar wajib diupload');
+            return;
+        }
 
         $originalFileName = $this->surat_pengantar->getClientOriginalName();
         $imagePath = $this->surat_pengantar->store('surat-pengantar', 'public');
@@ -42,8 +49,14 @@ class UploadSuratPengantar extends Component
 
         $user = Auth::user();
         $pengajuan = Pengajuan::where('user_id', $user->id)
-                                ->where('status_pengajuan', 'accept-first')
-                                ->first();
+            ->where('status_pengajuan', 'accept-first')
+            ->first();
+
+        if (!$pengajuan) {
+            $this->addError('surat_pengantar', 'Tidak ada pengajuan yang dapat diproses');
+            return;
+        }
+
         $pengajuan->surat_pengantar = $imagePath;
         $pengajuan->original_filename_surat_pengantar = $originalFileName;
         $pengajuan->tenggat = null;
