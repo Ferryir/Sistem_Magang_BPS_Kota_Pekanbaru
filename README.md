@@ -19,7 +19,7 @@
 
 ## 📋 Deskripsi
 
-SIMAGANG adalah aplikasi web untuk mengelola proses pendaftaran dan pelaksanaan magang di Badan Pusat Statistik (BPS) Kota Pekanbaru. Sistem ini memungkinkan mahasiswa/siswa untuk mendaftar magang secara online dan admin BPS untuk mengelola pengajuan tersebut.
+SIMAG adalah aplikasi web untuk mengelola proses pendaftaran dan pelaksanaan magang di Badan Pusat Statistik (BPS) Kota Pekanbaru. Sistem ini memungkinkan mahasiswa/siswa untuk mendaftar magang secara online dan admin BPS untuk mengelola pengajuan tersebut.
 
 ## ✨ Fitur Utama
 
@@ -165,7 +165,7 @@ MAIL_USERNAME=email@gmail.com
 MAIL_PASSWORD=app-password
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=noreply@bps.go.id
-MAIL_FROM_NAME="SIMAGANG BPS"
+MAIL_FROM_NAME="SIMAG BPS"
 ```
 
 ### Storage untuk Upload File

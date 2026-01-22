@@ -12,7 +12,7 @@
         <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('assets/images/usernormal/bg-dash.svg') }}"
             alt="">
         <div class="relative h-full w-full px-6 flex flex-col justify-center">
-            <p class="text-white text-xl md:text-3xl font-normal">Selamat datang di <span class="font-medium">SIMAGANG</span></p>
+            <p class="text-white text-xl md:text-3xl font-normal">Selamat datang di <span class="font-medium">SIMAG</span></p>
             <p class="text-white/80 text-sm mt-2">{{ $today->translatedFormat('l, j F Y') }}</p>
         </div>
     </div>

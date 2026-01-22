@@ -11,7 +11,7 @@
         <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('assets/images/usernormal/bg-dash.svg') }}"
             alt="">
         <p class="flex h-full w-full px-6 items-center justify-start text-white text-xl md:text-3xl font-normal">Selamat
-            datang di<span class="font-medium ml-1 md:ml-2 z-10">SIMAGANG</span></p>
+            datang di<span class="font-medium ml-1 md:ml-2 z-10">SIMAG</span></p>
     </div>
 
     <div class="grid grid-cols-1 mt-6 lg:grid-cols-3 lg:gap-x-6 gap-x-0 gap-y-6">
@@ -639,95 +639,95 @@
                 @endif
             {{ --Jika status accept - final, semua step harus biru-- }
         }
-                                        @if(!is_null($latestPengajuan) && $latestPengajuan->status_pengajuan === 'accept-final')
-                                                                                                                                                                                                        var step1 = document.querySelector('.step1-active');
-                                            var step2 = document.querySelector('.step2-active');
-                                            var step3 = document.querySelector('.step3-active');
-                                            var step4 = document.querySelector('.step4-active');
+                                            @if(!is_null($latestPengajuan) && $latestPengajuan->status_pengajuan === 'accept-final')
+                                                                                                                                                                                                                                                    var step1 = document.querySelector('.step1-active');
+                                                var step2 = document.querySelector('.step2-active');
+                                                var step3 = document.querySelector('.step3-active');
+                                                var step4 = document.querySelector('.step4-active');
 
-                                            // Step 1 - Profil
-                                            if (step1) {
-                                                step1.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                                step1.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                                var span = step1.querySelector('span');
-                                                var div = step1.querySelector('#tooltip-profil');
-                                                if (span) {
-                                                    span.classList.remove('bg-gray-100');
-                                                    span.classList.add('bg-blue-600');
+                                                // Step 1 - Profil
+                                                if (step1) {
+                                                    step1.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                                    step1.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                                    var span = step1.querySelector('span');
+                                                    var div = step1.querySelector('#tooltip-profil');
+                                                    if (span) {
+                                                        span.classList.remove('bg-gray-100');
+                                                        span.classList.add('bg-blue-600');
+                                                    }
+                                                    if (div) {
+                                                        div.classList.remove('bg-white', 'text-gray-600');
+                                                        div.classList.add('bg-blue-600', 'text-white');
+                                                    }
+                                                    var icon = step1.querySelector('i');
+                                                    if (icon) {
+                                                        icon.classList.remove('text-gray-500');
+                                                        icon.classList.add('text-white');
+                                                    }
                                                 }
-                                                if (div) {
-                                                    div.classList.remove('bg-white', 'text-gray-600');
-                                                    div.classList.add('bg-blue-600', 'text-white');
-                                                }
-                                                var icon = step1.querySelector('i');
-                                                if (icon) {
-                                                    icon.classList.remove('text-gray-500');
-                                                    icon.classList.add('text-white');
-                                                }
-                                            }
 
-                                            // Step 2 - Pengajuan
-                                            if (step2) {
-                                                step2.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                                step2.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                                var span = step2.querySelector('span');
-                                                var div = step2.querySelector('#tooltip-pengajuan');
-                                                if (span) {
-                                                    span.classList.remove('bg-gray-100');
-                                                    span.classList.add('bg-blue-600');
+                                                // Step 2 - Pengajuan
+                                                if (step2) {
+                                                    step2.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                                    step2.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                                    var span = step2.querySelector('span');
+                                                    var div = step2.querySelector('#tooltip-pengajuan');
+                                                    if (span) {
+                                                        span.classList.remove('bg-gray-100');
+                                                        span.classList.add('bg-blue-600');
+                                                    }
+                                                    if (div) {
+                                                        div.classList.remove('bg-white', 'text-gray-600');
+                                                        div.classList.add('bg-blue-600', 'text-white');
+                                                    }
+                                                    var icon = step2.querySelector('i');
+                                                    if (icon) {
+                                                        icon.classList.remove('text-gray-500');
+                                                        icon.classList.add('text-white');
+                                                    }
                                                 }
-                                                if (div) {
-                                                    div.classList.remove('bg-white', 'text-gray-600');
-                                                    div.classList.add('bg-blue-600', 'text-white');
-                                                }
-                                                var icon = step2.querySelector('i');
-                                                if (icon) {
-                                                    icon.classList.remove('text-gray-500');
-                                                    icon.classList.add('text-white');
-                                                }
-                                            }
 
-                                            // Step 3 - Lolos Seleksi
-                                            if (step3) {
-                                                step3.classList.remove('after:border-gray-100', 'after:bg-gray-100');
-                                                step3.classList.add('after:border-blue-600', 'after:bg-blue-600');
-                                                var span = step3.querySelector('span');
-                                                var div = step3.querySelector('#tooltip-diterima');
-                                                if (span) {
-                                                    span.classList.remove('bg-gray-100');
-                                                    span.classList.add('bg-blue-600');
+                                                // Step 3 - Lolos Seleksi
+                                                if (step3) {
+                                                    step3.classList.remove('after:border-gray-100', 'after:bg-gray-100');
+                                                    step3.classList.add('after:border-blue-600', 'after:bg-blue-600');
+                                                    var span = step3.querySelector('span');
+                                                    var div = step3.querySelector('#tooltip-diterima');
+                                                    if (span) {
+                                                        span.classList.remove('bg-gray-100');
+                                                        span.classList.add('bg-blue-600');
+                                                    }
+                                                    if (div) {
+                                                        div.classList.remove('bg-white', 'text-gray-600');
+                                                        div.classList.add('bg-blue-600', 'text-white');
+                                                    }
+                                                    var icon = step3.querySelector('i');
+                                                    if (icon) {
+                                                        icon.classList.remove('text-gray-500');
+                                                        icon.classList.add('text-white');
+                                                    }
                                                 }
-                                                if (div) {
-                                                    div.classList.remove('bg-white', 'text-gray-600');
-                                                    div.classList.add('bg-blue-600', 'text-white');
-                                                }
-                                                var icon = step3.querySelector('i');
-                                                if (icon) {
-                                                    icon.classList.remove('text-gray-500');
-                                                    icon.classList.add('text-white');
-                                                }
-                                            }
 
-                                            // Step 4 - Surat Pengantar
-                                            if (step4) {
-                                                var span = step4.querySelector('span');
-                                                var div = step4.querySelector('#tooltip-surat-pengantar');
-                                                if (span) {
-                                                    span.classList.remove('bg-gray-100');
-                                                    span.classList.add('bg-blue-600');
+                                                // Step 4 - Surat Pengantar
+                                                if (step4) {
+                                                    var span = step4.querySelector('span');
+                                                    var div = step4.querySelector('#tooltip-surat-pengantar');
+                                                    if (span) {
+                                                        span.classList.remove('bg-gray-100');
+                                                        span.classList.add('bg-blue-600');
+                                                    }
+                                                    if (div) {
+                                                        div.classList.remove('bg-white', 'text-gray-600');
+                                                        div.classList.add('bg-blue-600', 'text-white');
+                                                    }
+                                                    var icon = step4.querySelector('i');
+                                                    if (icon) {
+                                                        icon.classList.remove('text-gray-500');
+                                                        icon.classList.add('text-white');
+                                                    }
                                                 }
-                                                if (div) {
-                                                    div.classList.remove('bg-white', 'text-gray-600');
-                                                    div.classList.add('bg-blue-600', 'text-white');
-                                                }
-                                                var icon = step4.querySelector('i');
-                                                if (icon) {
-                                                    icon.classList.remove('text-gray-500');
-                                                    icon.classList.add('text-white');
-                                                }
-                                            }
-                                        @endif
-                                    });
+                                            @endif
+                                        });
     </script>
 
 @endsection

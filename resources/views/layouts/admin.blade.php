@@ -44,7 +44,7 @@
                 <a href="/" class="text-nowrap flex">
                     <div class="flex items-center justify-start md:justify-center border-transparent">
                         <img class="mr-1" src="{{ asset('assets/bps-logo.svg') }}" alt="BPS logo image">
-                        {{-- <h1 class="text-3xl font-medium font-sans italic text-[#2D95C9]">Simagang</h1> --}}
+                        {{-- <h1 class="text-3xl font-medium font-sans italic text-[#2D95C9]">Simag</h1> --}}
                     </div>
                 </a>
             </div>
