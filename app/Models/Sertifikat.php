@@ -23,21 +23,31 @@ class Sertifikat extends Model
     ];
 
     /**
-     * Generate nomor sertifikat otomatis
+     * Generate nomor sertifikat dengan nomor urut manual
      * Format: B-MMDDXXX/14.710/HM.340/YYYY
+     * @param string $nomorUrut - Nomor urut 3 digit (contoh: 001, 002, dst)
      */
-    public static function generateNomorSertifikat(): string
+    public static function generateNomorSertifikat(string $nomorUrut): string
     {
         $now = now();
         $month = $now->format('m');
         $day = $now->format('d');
         $year = $now->format('Y');
 
-        // Get count of certificates generated today
-        $countToday = self::whereDate('tanggal_terbit', $now->toDateString())->count();
-        $nextNumber = str_pad($countToday + 1, 3, '0', STR_PAD_LEFT);
+        // Pastikan nomor urut 3 digit dengan padding 0
+        $nomorUrut = str_pad($nomorUrut, 3, '0', STR_PAD_LEFT);
 
-        return "B-{$month}{$day}{$nextNumber}/14.710/HM.340/{$year}";
+        return "B-{$month}{$day}{$nomorUrut}/14.710/HM.340/{$year}";
+    }
+
+    /**
+     * Cek apakah nomor sertifikat sudah ada di database
+     * @param string $nomorSertifikat
+     * @return bool
+     */
+    public static function isNomorSertifikatExists(string $nomorSertifikat): bool
+    {
+        return self::where('nomor_sertifikat', $nomorSertifikat)->exists();
     }
 
     public function user(): BelongsTo

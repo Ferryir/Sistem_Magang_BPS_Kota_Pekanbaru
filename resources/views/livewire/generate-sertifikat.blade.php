@@ -78,15 +78,9 @@
                                     <i class="ti ti-download"></i> Download
                                 </a>
                             @elseif ($user->penilaian && $user->penilaian->nilai_akhir)
-                                <button wire:click="generateSertifikat('{{ $user->id }}')" wire:loading.attr="disabled"
-                                    wire:loading.class="opacity-50"
+                                <button wire:click="openGenerateModal('{{ $user->id }}')"
                                     class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-3 py-1.5 rounded">
-                                    <span wire:loading.remove wire:target="generateSertifikat('{{ $user->id }}')">
-                                        <i class="ti ti-file-plus"></i> Generate
-                                    </span>
-                                    <span wire:loading wire:target="generateSertifikat('{{ $user->id }}')">
-                                        <i class="ti ti-loader animate-spin"></i> Loading...
-                                    </span>
+                                    <i class="ti ti-file-plus"></i> Generate
                                 </button>
                             @else
                                 <span class="text-gray-400 text-xs">-</span>
@@ -104,4 +98,71 @@
             </tbody>
         </table>
     </div>
+
+    {{-- Modal Input Nomor Urut --}}
+    @if ($showModal)
+        <div class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+            <div class="relative bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+                {{-- Modal Header --}}
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                        <i class="ti ti-certificate text-blue-500"></i>
+                        Input Nomor Urut Sertifikat
+                    </h3>
+                    <button wire:click="closeModal" type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
+                </div>
+
+                {{-- Modal Body --}}
+                <div class="p-4 space-y-4">
+                    {{-- Info Format --}}
+                    <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-lg text-sm">
+                        <p class="font-medium mb-1"><i class="ti ti-info-circle"></i> Format Nomor Surat:</p>
+                        <p class="font-mono">B-MMDDXXX/14.710/HM.340/YYYY</p>
+                        <p class="text-xs mt-1 text-blue-600">XXX = Nomor urut yang akan Anda input</p>
+                    </div>
+
+                    {{-- Input Nomor Urut --}}
+                    <div>
+                        <label for="nomorUrut" class="block mb-2 text-sm font-medium text-gray-900">
+                            Nomor urut: <span class="text-red-500">*</span>
+                        </label>
+                        <input type="number" id="nomorUrut" wire:model.live="nomorUrut"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('nomorUrut') border-red-500 @enderror"
+                            placeholder="Contoh: 001, 002, 003, dst" min="1" max="999">
+                        @error('nomorUrut')
+                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- Preview Nomor Sertifikat --}}
+                    @if ($previewNomorSertifikat)
+                        <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                            <p class="text-sm font-medium mb-1"><i class="ti ti-eye"></i> Preview Nomor Sertifikat:</p>
+                            <p class="font-mono font-bold text-lg">{{ $previewNomorSertifikat }}</p>
+                        </div>
+                    @endif
+                </div>
+
+                {{-- Modal Footer --}}
+                <div class="flex items-center justify-end gap-2 p-4 border-t rounded-b">
+                    <button wire:click="closeModal" type="button"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300">
+                        Batal
+                    </button>
+                    <button wire:click="generateSertifikat" wire:loading.attr="disabled" wire:loading.class="opacity-50"
+                        class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                        <span wire:loading.remove wire:target="generateSertifikat">
+                            <i class="ti ti-file-certificate"></i> Generate Sertifikat
+                        </span>
+                        <span wire:loading wire:target="generateSertifikat">
+                            <i class="ti ti-loader animate-spin"></i> Memproses...
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>

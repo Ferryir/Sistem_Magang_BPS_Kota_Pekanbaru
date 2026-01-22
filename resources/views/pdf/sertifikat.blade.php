@@ -173,7 +173,27 @@
 
         <!-- Info Akademik -->
         <div class="akademik-info">
-            MAHASISWA SEMESTER {{ $user->semester ?? 'IV' }}, JURUSAN {{ $user->jurusan }},<br>
+            @php
+                // Konversi angka ke romawi
+                $romanNumerals = [
+                    1 => 'I',
+                    2 => 'II',
+                    3 => 'III',
+                    4 => 'IV',
+                    5 => 'V',
+                    6 => 'VI',
+                    7 => 'VII',
+                    8 => 'VIII',
+                    9 => 'IX',
+                    10 => 'X',
+                    11 => 'XI',
+                    12 => 'XII',
+                    13 => 'XIII',
+                    14 => 'XIV'
+                ];
+                $semesterRomawi = $romanNumerals[$user->semester] ?? $user->semester ?? 'IV';
+            @endphp
+            MAHASISWA SEMESTER {{ $semesterRomawi }}, JURUSAN {{ $user->jurusan }},<br>
             PRODI {{ $user->prodi ?? '-' }}, {{ $user->institusi }}
         </div>
 
