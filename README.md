@@ -118,7 +118,7 @@ SIMAG adalah aplikasi web untuk mengelola proses pendaftaran dan pelaksanaan mag
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=simagang_bps
+    DB_DATABASE=simag_bps
     DB_USERNAME=root
     DB_PASSWORD=
     ```
